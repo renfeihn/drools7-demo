@@ -1,0 +1,74 @@
+package com.wm
+
+import com.sample.RuleFlow;
+
+rule "First"
+	lock-on-active true
+	ruleflow-group 'tested'
+    when
+        $rf:RuleFlow(userName=="wangm");
+    then
+        $rf.setAge(10);
+        $rf.setUserName("wangmm");
+        update($rf);
+        System.out.println($rf.getUserName());
+
+end
+
+rule "Second"
+  no-loop true
+    ruleflow-group 'test'
+    when
+       $rf:RuleFlow(userName=="wangm" && age < 18);
+    then
+       $rf.setSource(58);
+        update($rf);
+        System.out.println("未成年");
+
+end
+
+rule "Third"
+   no-loop true
+    ruleflow-group 'test'
+    when
+       $rf:RuleFlow(userName=="wangmm" && age >= 18);
+    then
+        $rf.setSource(100);
+        update($rf);
+        System.out.println("已成年");
+
+end
+
+
+rule "Third2"
+    no-loop true
+    ruleflow-group 'test2'
+    when
+       $rf:RuleFlow(userName=="wangmm" && source < 60);
+    then
+        System.out.println($rf.getUserName()+"的年龄为"+$rf.getAge()+" 成绩为"+$rf.getSource()+" 规则 （Third2）");
+        $rf.setSource($rf.getSource()+10);
+        update($rf);
+end
+
+
+rule "Third3"
+no-loop true
+    ruleflow-group 'test2'
+    when
+       $rf:RuleFlow(userName=="wangmm" && source >= 60);
+    then
+        System.out.println($rf.getUserName()+"的年龄为"+$rf.getAge()+" 成绩为"+$rf.getSource()+" 规则 （Third3）");
+         $rf.setSource($rf.getSource()+1);
+        update($rf);
+end
+
+rule "Third4"
+no-loop true
+    ruleflow-group 'test3'
+    when
+    $rf:RuleFlow();
+       eval(true);
+    then
+        System.out.println($rf.getUserName()+"的年龄为"+$rf.getAge()+" 成绩为"+$rf.getSource()+" 规则（Third4）");
+end

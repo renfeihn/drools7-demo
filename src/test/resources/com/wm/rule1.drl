@@ -1,0 +1,15 @@
+package com.wm
+
+import com.sample.RuleFlow;
+
+
+rule "2"
+	when
+        $p : RuleFlow(age > 30);
+    then
+		System.out.println("hello, young xu2!");
+end
+
+query "people2"
+    person : RuleFlow( age > 30 )
+end

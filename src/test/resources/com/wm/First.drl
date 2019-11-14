@@ -1,0 +1,15 @@
+package com.wm
+
+import java.util.Map;
+
+rule "Second"
+  no-loop true
+    ruleflow-group 'test'
+    when
+       $m:Map(this["userName"]=="wangm" && this["age"] < 18)
+    then
+       $m.put("msg","Î´³ÉÄê");
+        update($m);
+        System.out.println($m.get("msg"));
+
+end

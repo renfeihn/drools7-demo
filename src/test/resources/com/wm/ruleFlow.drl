@@ -23,7 +23,7 @@ rule "Second"
     then
        $rf.setSource(58);
         update($rf);
-        System.out.println("æœªæˆå¹´");
+        System.out.println("Î´³ÉÄê");
 
 end
 
@@ -35,7 +35,7 @@ rule "Third"
     then
         $rf.setSource(100);
         update($rf);
-        System.out.println("å·²æˆå¹´");
+        System.out.println("ÒÑ³ÉÄê");
 
 end
 
@@ -46,7 +46,7 @@ rule "Third2"
     when
        $rf:RuleFlow(userName=="wangmm" && source < 60);
     then
-        System.out.println($rf.getUserName()+"çš„å¹´é¾„ä¸º"+$rf.getAge()+" æˆç»©ä¸º"+$rf.getSource()+" è§„åˆ™ ï¼ˆThird2ï¼‰");
+        System.out.println($rf.getUserName()+"µÄÄêÁäÎª"+$rf.getAge()+" ³É¼¨Îª"+$rf.getSource()+" ¹æÔò £¨Third2£©");
         $rf.setSource($rf.getSource()+10);
         update($rf);
 end
@@ -58,7 +58,7 @@ no-loop true
     when
        $rf:RuleFlow(userName=="wangmm" && source >= 60);
     then
-        System.out.println($rf.getUserName()+"çš„å¹´é¾„ä¸º"+$rf.getAge()+" æˆç»©ä¸º"+$rf.getSource()+" è§„åˆ™ ï¼ˆThird3ï¼‰");
+        System.out.println($rf.getUserName()+"µÄÄêÁäÎª"+$rf.getAge()+" ³É¼¨Îª"+$rf.getSource()+" ¹æÔò £¨Third3£©");
          $rf.setSource($rf.getSource()+1);
         update($rf);
 end
@@ -70,5 +70,5 @@ no-loop true
     $rf:RuleFlow();
        eval(true);
     then
-        System.out.println($rf.getUserName()+"çš„å¹´é¾„ä¸º"+$rf.getAge()+" æˆç»©ä¸º"+$rf.getSource()+" è§„åˆ™ï¼ˆThird4ï¼‰");
+        System.out.println($rf.getUserName()+"µÄÄêÁäÎª"+$rf.getAge()+" ³É¼¨Îª"+$rf.getSource()+" ¹æÔò£¨Third4£©");
 end

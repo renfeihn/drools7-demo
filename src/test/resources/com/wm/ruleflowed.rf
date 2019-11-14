@@ -5,22 +5,29 @@
          type="RuleFlow" name="flow2" id="test" package-name="com.wm" version="" >
 
   <header>
+    <imports>
+      <import name="org.kie.api.runtime.process.CaseAssignment" />
+      <import name="org.kie.api.runtime.process.CaseData" />
+    </imports>
   </header>
 
   <nodes>
-    <start id="1" name="Start" x="7" y="71" width="48" height="48" />
+    <start id="1" name="Start" x="14" y="93" width="48" height="48" />
     <ruleSet id="2" name="tested" x="177" y="16" width="80" height="48" ruleFlowGroup="tested" />
-    <end id="7" name="End" x="482" y="96" width="48" height="48" />
-    <ruleSet id="9" name="test" x="177" y="96" width="80" height="48" ruleFlowGroup="test" />
-    <ruleSet id="10" name="test2" x="328" y="178" width="80" height="48" ruleFlowGroup="test2" />
+    <end id="7" name="End" x="640" y="99" width="48" height="48" />
+    <ruleSet id="9" name="test" x="177" y="182" width="80" height="48" ruleFlowGroup="test" />
+    <ruleSet id="10" name="test2" x="379" y="101" width="80" height="48" ruleFlowGroup="test2" />
     <split id="11" name="Gateway" x="88" y="95" width="49" height="49" type="3" >
+      <metaData name="UniqueId">
+        <value>_jbpm-unique-31</value>
+      </metaData>
       <constraints>
-        <constraint toNodeId="9" toType="DROOLS_DEFAULT" name="toTest" priority="1" type="rule" dialect="java" >eval(true)</constraint>
         <constraint toNodeId="2" toType="DROOLS_DEFAULT" name="toTested" priority="1" type="rule" dialect="java" >eval(true)</constraint>
+        <constraint toNodeId="9" toType="DROOLS_DEFAULT" name="toTest" priority="1" type="rule" dialect="java" >eval(true)</constraint>
       </constraints>
     </split>
     <join id="12" name="dd" x="289" y="96" width="49" height="49" type="1" />
-    <ruleSet id="13" name="Rule" x="370" y="96" width="80" height="48" ruleFlowGroup="test3" />
+    <ruleSet id="13" name="Rule" x="505" y="100" width="80" height="48" ruleFlowGroup="test3" />
   </nodes>
 
   <connections>
